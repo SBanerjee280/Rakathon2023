@@ -1,0 +1,62 @@
+{% extends 'app1/layout.html' %}
+
+{% block head %}
+
+
+{% endblock %}
+
+
+
+{% block body %}
+{% comment %} <style>
+  *{
+    border:1px solid red;
+  }
+</style>   {% endcomment %}
+
+{% csrf_token %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Fund-o-Matic</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+ 
+
+<div class="container my-5">
+  <style>
+    body {
+      background: #FCF5E5;
+    }
+  </style>
+
+  <div class="row" style="margin-left:-111px;">
+    <div class="col-lg-6" style="background-color: ##fff0;">
+      <h4 class="card-title h5 h4-sm" style="margin-top:4rem; color:#0B2B5C;font-size:58px;">Financial freedom begins here</h4>
+      <p class="card-text" style="color:#0B2B5C;font-size:20px;">All the tools you need to make wise & effective investment decisions</p>
+      <button type="button" class="btn btn-primary" onclick="window.location.href='/strategy_form' " style="background-color:#0B2B5C;width:20rem;height:3.5rem">Create Your Investment Strategy </button>
+    </div>
+    <div class="col-lg-6" style="margin-top:-5rem">
+      <div class="p-5 mt-4">
+        <img  style="width:683px;height:396px;"src="/static/app1/header.svg" />
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+
+  
+
+{% endblock %}

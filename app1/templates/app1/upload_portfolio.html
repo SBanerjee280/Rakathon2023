@@ -1,0 +1,73 @@
+{% extends 'app1/layout.html' %}
+
+{% block head %}
+
+
+{% endblock %}
+
+
+
+{% block body %}
+
+
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"> 
+
+
+ 
+
+<div class="container my-5">
+  <style>
+    body {
+      background: #FCF5E5;
+    }
+  </style>
+
+  <div style="margin-left:-111px;margin-top: -50px;">
+    <h2 style="color:#0B2B5C;"> Upload your portfolio</h2>
+    <p style="color:#0B2B5C;">  Min Three is required  </p>
+    </div>
+    <div class="row"style="margin-left:-111px;">
+      <div class="col-lg-12" style="background-color: #fff;height:18rem;">
+          <form method="POST" action="/upload_portfolio">
+              {% csrf_token %}
+              <br>
+              <br>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="stock_1">Stock 1</label>
+                    <select class="form-control" id="stock_1" name="stock_1">
+                        <option value="Reliance Industries Limited" selected >Reliance Industries Limited</option>
+                        <option value="ICICI Bank Limited">ICICI Bank Limited</option>
+                        <option value="Housing Development Finance Corporation Limited">Housing Development Finance Corporation Limited</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                  <div class="form-group col-md-6">
+                      <label for="stock_2">Stock 2</label>
+                      <select class="form-control" id="stock_2" name="stock_2">
+                          <option value="Tata Consultancy Services Limited" selected >Tata Consultancy Services Limited</option>
+                          <option value="Hindustan Unilever Limited">Hindustan Unilever Limited</option>
+                          <option value="ITC Limited">ITC Limited</option>
+                          <option value="Other">Other</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="stock_3">Stock 3</label>
+                    <select class="form-control" id="stock_3" name="stock_3">
+                        <option value="HDFC Bank Limited" selected >HDFC Bank Limited</option>
+                        <option value="Infosys Limited">Infosys Limited </option>
+                        <option value="State Bank of India">State Bank of India </option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+{% endblock %}

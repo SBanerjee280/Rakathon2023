@@ -1,0 +1,21 @@
+footer {
+    background: #505050;
+}
+
+.footer-links {
+    text-align: center;
+}
+
+.footer-links li {
+    display: inline;
+    padding: 10px;
+}
+
+.footer-links li a {
+    color: white;
+}
+
+#menu_nav{
+    z-index: 2;
+}
+

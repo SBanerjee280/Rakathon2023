@@ -1,0 +1,45 @@
+{% extends 'app1/layout.html' %}
+
+{% block head %}
+
+
+{% endblock %}
+
+
+
+{% block body %}
+
+
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css"> 
+
+
+ 
+
+<div class="container my-5">
+  <style>
+    body {
+      background: #FCF5E5;
+    }
+  </style>
+
+  <table id="example" class="display" width="100%"></table>
+
+  <script>
+      var data_portfolio = {{data_portfolio | safe}};
+      var columnNames = {{ column_names | safe}};
+
+        
+    var table = new DataTable('#example', {
+        columns: columnNames,
+        data: data_portfolio,
+    });
+
+   
+
+  </script>
+
+
+{% endblock %}

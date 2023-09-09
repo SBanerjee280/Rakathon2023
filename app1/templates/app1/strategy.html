@@ -1,0 +1,83 @@
+{% extends 'app1/layout.html' %}
+
+{% block head %}
+
+
+{% endblock %}
+
+
+
+{% block body %}
+
+
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+{% csrf_token %}
+
+
+
+<div class="container my-5">
+    <style>
+        body {
+            background: #FCF5E5;
+        }
+    </style>
+
+    {% comment %} <h1>Insight</h1>
+    <p>Age: {{ age }}</p>
+    <p>Gender: {{ gender }}</p> {% endcomment %}
+
+    <div class="alert alert-success" role="alert" id="alert" style="display: none;">
+        Successfully Saved!!
+    </div>
+
+    <table id="example" class="display" width="100%"></table>
+
+    <button class="btn" onclick="location.href='/portfolio';">View Portfolio</button>
+
+    <script>
+        var data = {{ data | safe}};
+        var columnNames = {{ column_names | safe}};
+        columnNames.push({ "title": 'Portfolio' })
+
+
+        var table = new DataTable('#example', {
+            columns: columnNames,
+            data: data,
+            columnDefs: [
+                {
+                    data: null,
+                    defaultContent: '<button class="btn">Add to portfolio</button>',
+                    targets: -1
+                }
+            ]
+        });
+
+        table.on('click', 'button', function (e) {
+            document.querySelector('#alert').style.display = 'none';
+            let data = table.row(e.target.closest('tr')).data();
+            filters = { "data": data }
+            var token = document.getElementsByName('csrfmiddlewaretoken')[0].value;
+            console.log("sending post request with filters: ", filters);
+            url = '/update_portfolio'
+
+            $.ajax({
+                method: 'POST',
+                headers: {
+                    "X-CSRFToken": token
+                },
+                credentials: 'include',
+                url: url,
+                data: filters,
+                success: function (data) {
+                    console.log("Filtered data: ", data);
+                    document.querySelector('#alert').style.display = 'block';
+                }
+            })
+        });
+
+    </script>
+
+    {% endblock %}

@@ -1,0 +1,168 @@
+{% extends 'app1/layout.html' %}
+
+{% block head %}
+
+
+{% endblock %}
+
+
+
+{% block body %}
+{% comment %} <style>
+  *{
+    border:1px solid red;
+  }
+</style>   {% endcomment %}
+
+{% csrf_token %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Fund-o-Matic</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+ 
+
+<div class="container my-5">
+  <style>
+    body {
+      background: #FCF5E5;
+    }
+  </style>
+  <div style="margin-left:-111px;margin-top: -10px;">
+  <h2 style="color:#0B2B5C;"> Elevate Your Wealth Game:</h2>
+  <p style="color:#0B2B5C;">  Gain Exclusive Access to Investment Strategy Insights!  </p>
+  </div>
+  <div class="row"style="margin-left:-111px;">
+    <div class="col-lg-12" style="background-color: #fff;height:50rem;">
+        <form method="POST" action="/strategy">
+            {% csrf_token %}
+            <br>
+            <br>
+            <form method="POST" action="/strategy_form">
+                {% csrf_token %}
+                <br>
+                <br>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="age">Age</label>
+                        <input type="number" class="form-control" id="age" name="age" placeholder="Age" value="29" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="gender">Gender</label>
+                        <select class="form-control" id="gender" name="gender">
+                            <option value="Male" selected >Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="annualIncome">Annual Income (in LPA)</label>
+                        <input type="number" class="form-control" id="annualIncome" name="annual_income" placeholder="Annual Income" value="20" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="investmentAmount">Amount to be Invested (in INR)</label>
+                        <input type="number" class="form-control" id="investmentAmount" name="investment_amount" placeholder="Investment Amount" value="10000" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="expectedReturn">Expected Return Percentage (%)</label>
+                        <input type="number" class="form-control" id="expectedReturn" name="expected_return" placeholder="Expected Return" value="20" required>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="timeHorizon">Time Horizon (in years)</label>
+                        <input type="number" class="form-control" id="timeHorizon" name="time_horizon" placeholder="Time Horizon" value="1" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>How many people dependent on your income?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="dependents" id="highRisk" value="0-2" checked>
+                        <label class="form-check-label" for="highRisk">
+                            0-2
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="dependents" id="medRisk" value="2-4">
+                        <label class="form-check-label" for="medRisk">
+                            2-4
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="dependents" id="lowRisk" value=">5">
+                        <label class="form-check-label" for="lowRisk">
+                            >5
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Due to general market correction, one of your investments loses 14% of its value a short time after you buy it. What do you do?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="market_correction" id="highRiskBuy" value="Buy more shares at the depreciated value">
+                        <label class="form-check-label" for="highRiskBuy">
+                            Buy more shares at the depreciated value
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" checked type="radio" name="market_correction" id="medRiskWait" value="Wait for the market price to rise and sell">
+                        <label class="form-check-label" for="medRiskWait">
+                            Wait for the market price to rise and sell
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="market_correction" id="lowRiskSell" value="Sell at whatever price available and recover">
+                        <label class="form-check-label" for="lowRiskSell">
+                            Sell at whatever price available and recover
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Which return would you prefer more for a 5-year horizon?</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="return_preference" id="highRiskReturn" value="15%, 20%, -25%, 12%, 20%">
+                        <label class="form-check-label" for="highRiskReturn">
+                            15%, 20%, -25%, 12%, 20%
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="return_preference" id="medRiskReturn" value="5%, 7%, 10%, 12%, 15%">
+                        <label class="form-check-label" for="medRiskReturn">
+                            5%, 7%, 10%, 12%, 15%
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" checked type="radio" name="return_preference" id="lowRiskReturn" value="-5%, -8%, 9%, 12%, 35%">
+                        <label class="form-check-label" for="lowRiskReturn">
+                            -5%, -8%, 9%, 12%, 35%
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+            
+    </div>
+
+
+    {% comment %} <div class="col-lg-6" style="margin-top:-5rem" >
+      <div class="p-5 mt-4">
+        <img  style="width:683px;height:396px;"src="/static/app1/strategy.svg" />
+        </div>
+    </div>  {% endcomment %}
+</div>
+</div>
+
+{% endblock %}
